@@ -8,6 +8,7 @@ import ItemView from '../views/ItemView.vue';
 
 
 
+
 Vue.use(VueRouter);
 
 export const router=new VueRouter({
@@ -34,9 +35,14 @@ export const router=new VueRouter({
             component:UserView,
         },
         {
-            path:"/item",
+            path:"/user/:id",
+            component:UserView,
+        },
+        {
+            path:"/item/:id",
             component:ItemView,
         },
+       
     ],
 });
 
