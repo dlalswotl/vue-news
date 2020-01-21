@@ -1,20 +1,18 @@
 <template>
   <div>
-      ask
+      <ul>
+        <li v-for="(ask,index) in this.$store.state.asks" v-bind:key="index">
+          {{ask.title}}
+        </li>
+      </ul>
   </div>
 </template>
 
 <script>
-import {fetchItemList} from "../api/index.js"
 export default {
+  
   created(){
-    fetchItemList()
-    .then(function(response){
-      console.log(response);
-    })
-    .catch(function(error){
-      console.log(error);
-    })
+    this.$store.dispatch('FETCH_ASKS');
   }
 
 }

@@ -1,27 +1,17 @@
 <template>
   <div>
-      news
+      <ul>
+        <li v-for="(item,index) in this.$store.state.news" v-bind:key="index">
+          {{item.title}}
+        </li>
+      </ul>
   </div>
 </template>
 
 <script>
-import {fetchNewsList} from '../api/index.js'
 export default {
-  data(){
-    return {
-      news:[],
-    }
-  },
   created(){
-    fetchNewsList()
-    .then(
-      function(response){
-        console.log(response);
-        })
-    .catch(
-      function(error){
-        console.log(error+"에러");
-        })
+   this.$store.dispatch("FETCH_NEWS");
   }
 }
 </script>
